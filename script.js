@@ -1,5 +1,7 @@
 // --- STATE & CONFIG ---
-const API_URL = 'http://localhost:3000/api';
+// This is the critical line that has been updated.
+const API_URL = 'https://elegantcollectionnew-backend.onrender.com/api'; // <-- REPLACE WITH YOUR ACTUAL RENDER URL
+
 let cart = [];
 const products = [
     {id: 1, name: "Classic Leather Watch", price: 24999, description: "Elegant timepiece with genuine leather strap", category: "watches", image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=500&q=80"},
