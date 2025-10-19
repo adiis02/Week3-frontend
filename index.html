@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2C2C2C">
+    <meta name="color-scheme" content="dark">
+    <title>Elegant Collections - Full Stack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <header>
+        <nav>
+            <div class="nav-left">
+                <h1>Elegant Collections</h1>
+            </div>
+            <div class="nav-center">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search products...">
+                    <div id="search-suggestions" class="search-suggestions"></div>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div id="auth-container">
+                    <!-- This will be dynamically filled by JS -->
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="categories">
+            <button class="category-btn active" data-category="all">All</button>
+            <button class="category-btn" data-category="watches">Watches</button>
+            <button class="category-btn" data-category="accessories">Accessories</button>
+            <button class="category-btn" data-category="leather">Leather Goods</button>
+        </section>
+
+        <section id="products" class="products-grid"></section>
+
+        <div id="cart-sidebar" class="cart-sidebar">
+            <div class="cart-header">
+                <h2>Shopping Cart</h2>
+                <button class="close-cart" onclick="toggleCart()">&times;</button>
+            </div>
+            <div id="cart-items"></div>
+            <div class="cart-footer">
+                <h3>Total: ₹<span id="cart-total">0</span></h3>
+                <button class="checkout-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+            </div>
+        </div>
+
+        <!-- Authentication Modal -->
+        <div id="auth-modal" class="auth-modal">
+            <div class="auth-content">
+                <button class="auth-close" onclick="closeAuthModal()">&times;</button>
+                
+                <!-- Login Form -->
+                <div id="login-form-container">
+                    <h2 class="auth-title">Welcome Back</h2>
+                    <form id="login-form" class="auth-form">
+                        <div class="input-group">
+                            <input type="email" id="login-email" class="auth-input" placeholder="Email" required>
+                            <p class="error-message" id="login-email-error"></p>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="login-password" class="auth-input" placeholder="Password" required>
+                            <p class="error-message" id="login-password-error"></p>
+                        </div>
+                        <p class="error-message" id="login-generic-error"></p>
+                        <button type="submit" class="auth-btn">Log In</button>
+                    </form>
+                    <p class="auth-toggle-link">Don't have an account? <a href="#" onclick="showSignupForm()">Sign Up</a></p>
+                </div>
+
+                <!-- Signup Form -->
+                <div id="signup-form-container" style="display: none;">
+                    <h2 class="auth-title">Create Account</h2>
+                    <form id="signup-form" class="auth-form">
+                        <div class="input-group">
+                            <input type="text" id="signup-name" class="auth-input" placeholder="Name" required>
+                            <p class="error-message" id="signup-name-error"></p>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="signup-email" class="auth-input" placeholder="Email" required>
+                            <p class="error-message" id="signup-email-error"></p>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="signup-password" class="auth-input" placeholder="Password" required>
+                            <div class="password-strength">
+                                <div class="strength-bar"></div>
+                            </div>
+                            <p class="error-message" id="signup-password-error"></p>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="signup-confirm-password" class="auth-input" placeholder="Confirm Password" required>
+                            <p class="error-message" id="signup-confirm-password-error"></p>
+                        </div>
+                         <p class="error-message" id="signup-generic-error"></p>
+                        <button type="submit" class="auth-btn">Create Account</button>
+                    </form>
+                    <p class="auth-toggle-link">Already have an account? <a href="#" onclick="showLoginForm()">Log In</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="toast"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
